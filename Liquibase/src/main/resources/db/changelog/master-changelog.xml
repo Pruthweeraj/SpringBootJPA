@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+	logicalFilePath="db/changelog/db-changelog-1.0.xml">
+
+	<changeSet id="1" author="almtiger" dbms="h2">
+		<sql dbms="h2" endDelimiter=";">
+			CREATE SCHEMA deadlettermessages
+		</sql>
+	</changeSet>
+
+	<changeSet id="2" author="almtiger" dbms="h2">
+
+		<createTable tableName="dead_letter_queue_messages"
+			schemaName="deadlettermessages">
+			<column name="message_id" type="serial">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="dead_letter_queue_name" type="varchar(512)">
+				<constraints nullable="false" />
+			</column>
+			<column name="source" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="destination" type="varchar(512)">
+				<constraints nullable="true" />
+			</column>
+			<column name="event_scrid" type="varchar(10)">
+				<constraints nullable="true" />
+			</column>
+			<column name="event_type" type="varchar(10)">
+				<constraints nullable="true" />
+			</column>
+			<column name="event" type="text">
+				<constraints nullable="false" />
+			</column>
+			<column name="event_time" type="timestamp">
+				<constraints nullable="true" />
+			</column>
+			<column name="replay_count" type="int">
+				<constraints nullable="true" />
+			</column>
+			<column name="replayable" type="int">
+				<constraints nullable="true" />
+			</column>
+			<column name="created_date" type="timestamp"
+				defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_date" type="timestamp">
+				<constraints nullable="true" />
+			</column>
+		</createTable>
+
+		<createIndex tableName="dead_letter_queue_messages"
+			indexName="idx_dead_letter_queue_messages_dead_letter_queue_name"
+			schemaName="deadlettermessages">
+			<column name="dead_letter_queue_name" />
+		</createIndex>
+		<createIndex tableName="dead_letter_queue_messages"
+			indexName="idx_dead_letter_queue_messages_source"
+			schemaName="deadlettermessages">
+			<column name="source" />
+		</createIndex>
+		<createIndex tableName="dead_letter_queue_messages"
+			indexName="idx_dead_letter_queue_messages_event_scrid"
+			schemaName="deadlettermessages">
+			<column name="event_scrid" />
+		</createIndex>
+		<createIndex tableName="dead_letter_queue_messages"
+			indexName="idx_dead_letter_queue_messages_created_date"
+			schemaName="deadlettermessages">
+			<column name="created_date" />
+		</createIndex>
+
+	</changeSet>
+
+
+
+	<include file="db/changelog/schemaNameChange.xml" />
+
+	<include file="db/changelog/columnNameChange.xml" />
+	
+	<include file="db/changelog/changeIndexName.xml" />
+
+
+
+</databaseChangeLog>
+

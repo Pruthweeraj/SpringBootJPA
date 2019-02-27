@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+	logicalFilePath="db/changelog/db-changelog-1.0.xml">
+
+
+
+	<changeSet id="4" author="almtiger" dbms="h2">
+		<renameColumn schemaName="ALM"
+			newColumnName="dead_letter_queue_nm"
+			oldColumnName="dead_letter_queue_name"
+			tableName="dead_letter_queue_messages" />
+
+		<renameColumn schemaName="ALM"
+			newColumnName="created_dt" 
+			oldColumnName="created_date"
+			tableName="dead_letter_queue_messages" />
+
+
+		<renameColumn schemaName="ALM"
+			newColumnName="updated_dt" 
+			oldColumnName="updated_date"
+			tableName="dead_letter_queue_messages" />
+
+
+		<renameColumn schemaName="ALM"
+			newColumnName="replay_cnt" 
+			oldColumnName="replay_count"
+			tableName="dead_letter_queue_messages" />
+
+
+	</changeSet>
+
+
+</databaseChangeLog>
