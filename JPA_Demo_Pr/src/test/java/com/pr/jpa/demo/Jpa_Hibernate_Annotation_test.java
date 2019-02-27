@@ -16,31 +16,16 @@ import com.pr.jpa.demo.repository.CourseRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=JpaDemoApplication.class)
-public class  JpaDemoRepositoryTest{
+public class  Jpa_Hibernate_Annotation_test{
 
 	@Autowired
 	CourseRepository repository;
 	
 	@Test
-	public void findByIdBasic() {
-	Course course = repository.findById(1001);
-	assertEquals("Jpa in 50 steps", course.getName());
-	}
-
+	public void ok() {
 	
-	@Test
-	@DirtiesContext
-	public void deleteByIdBasic() {
-		repository.deleteById(1003L);
-		assertNull(repository.findById(1003l));
+	
 	}
-
-	@Test
-	@DirtiesContext
-	public void playWithEntityManager_test() {
-		repository.playWithEntityManager();
-	}
-
 	
 	
 }
