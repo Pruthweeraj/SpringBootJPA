@@ -1,12 +1,16 @@
 package com.pr.jpa.demo.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -22,7 +26,14 @@ public class Course {
 
 	@Column(nullable=false)
 	private String name;
+	
+	@OneToMany(mappedBy ="course" )
+	private List<Review> reviews =new ArrayList<>() ;
 
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<>();
+	
+	
 	@CreationTimestamp
 	private Timestamp createdTime;
 	
@@ -45,6 +56,33 @@ public class Course {
 		this.name = name;
 	}
 
+	
+	
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void addReview(Review review) {
+		this.reviews.add(review);
+	}
+
+	public void removeReview(Review review) {
+		this.reviews.remove(review);
+	}
+	
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
+
+	public void removeStudent(Student student) {
+		this.students.remove(student);
+	}
+	
 	public long getId() {
 		return id;
 	}

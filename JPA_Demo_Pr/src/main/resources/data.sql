@@ -5,17 +5,6 @@ Insert into course (id,name ,created_time  , updated_time) values(1004,'Liqubase
 
 
 
-
-
-insert into Student (id , name)
-values(2001,'Pruthwee');
-insert into Student (id , name)
-values(2002,'Pupa');
-insert into Student (id , name)
-values(2003,'Pr');
-
-
-
 insert into Passport (id , number)
 values(4001,'K1s4454');
 insert into Passport (id , number)
@@ -24,10 +13,21 @@ insert into Passport (id , number)
 values(4003,'MN0014');
 
 
-insert into Review (id , rating , description)
-values(5001,'5' ,'Very Good');
-insert into Review (id ,  rating , description)
-values(5002,'4' , 'Excellent');
-insert into Review (id ,  rating , description)
-values(5003,'5' ,'OutStanding');
+insert into Student (id , name ,passport_id)
+values(2001,'Pruthwee',4001);
+insert into Student (id , name,passport_id)
+values(2002,'Pupa',4002);
+insert into Student (id , name,passport_id)
+values(2003,'Pr' ,4003);
+
+
+
+
+
+insert into Review (id , rating , description , course_id)
+values(5001,'5' ,'Very Good' ,1001);
+insert into Review (id ,  rating , description, course_id)
+values(5002,'4' , 'Excellent',1001);
+insert into Review (id ,  rating , description, course_id)
+values(5003,'5' ,'OutStanding' ,1003);
 
