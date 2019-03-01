@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.pr.jpa.demo.entity.Passport;
+import com.pr.jpa.demo.entity.Review;
 import com.pr.jpa.demo.entity.Student;
 import com.pr.jpa.demo.repository.StudentRepository;
 
@@ -55,6 +56,22 @@ public class  StudentRepositoryTest{
 		Passport passport = em.find(Passport.class, 4002L);
 		logger.info("passport --> {}" ,passport );
 		logger.info("student  --> {}" ,passport.getStudent());
+	}
+	
+	
+	@Test
+	@Transactional
+	public void studentWithReview() {
+		Student student = em.find(Student.class, 2002L);
+		logger.info("student -->  {}" , student);
+		logger.info("student.getReviews() -->  {}" , student.getReviews());
+	}
+	
+	@Test
+	public void reviewWithStudent() {
+		Review review = em.find(Review.class, 5001L);
+		logger.info("review -->  {}" , review);
+		logger.info("review.getStudent() -->  {}" , review.getStudent());
 	}
 	
 }
