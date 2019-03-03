@@ -1,5 +1,6 @@
 package com.pr.jpa.demo.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-public class Student {
+public class Student implements Serializable {
 
 	@Id
 	@GeneratedValue
