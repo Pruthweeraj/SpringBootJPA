@@ -39,12 +39,12 @@ public class  CourseRepositoryTest{
 	}
 
 	
-	@Test
-	@DirtiesContext
-	public void deleteByIdBasic() {
-		repository.deleteById(1003L);
-		assertNull(repository.findById(1003l));
-	}
+//	@Test
+//	@DirtiesContext
+//	public void deleteByIdBasic() {
+//		repository.deleteById(1003L);
+//		assertNull(repository.findById(1003l));
+//	}
 
 	@Test
 	@DirtiesContext
